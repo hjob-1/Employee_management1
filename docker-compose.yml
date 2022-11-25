@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  mongodb:
+      image: "mongo"
+      restart: always
+      volumes:
+        - data:/data/db
+      networks:
+        - shared-network
+  ui:
+    container_name: employee_ui
+    image: employee_ui:1.0.0 
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - shared-network    
+    depends_on:
+      - server
+  server:
+    container_name: employee_api
+    image: employee_api:1.0.0 
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports: 
+      - "4001:4000"    
+    depends_on:
+      - mongodb
+    networks:
+      - shared-network
+  
+networks:
+    shared-network:
+volumes:
+    data:
+      

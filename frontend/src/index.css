@@ -1,0 +1,26 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.date {
+  margin-top: 12px;
+  width: 100%;
+  border: none !important;
+
+}
+
+body {
+  background-color: #F7F7F7;
+  font-family: 'Barlow', sans-serif;
+  font-family: 'Fraunces', serif;
+  font-family: 'Roboto', sans-serif;
+}
